@@ -7,6 +7,7 @@ import { DiaryStateContext } from "../App";
 const Home = () => {
 
     const diaryList = useContext(DiaryStateContext);
+
     const [data,setData] = useState([]);
     const [curDate,setCurDate] = useState(new Date());
     const headText = `${curDate.getFullYear()}년 ${curDate.getMonth()+1}월 `;
@@ -24,7 +25,8 @@ const Home = () => {
             0
         ).getTime();
 
-        setData(diaryList.filter((it)=> firstDay <= it.data && it.data <= lastDay)
+        setData(
+            diaryList.filter((it)=> firstDay <= it.date && it.date <= lastDay)
         );
         }
     },[diaryList,curDate]);

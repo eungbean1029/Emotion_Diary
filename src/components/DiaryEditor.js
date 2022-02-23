@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { DiaryDispatchContext } from "../App";
 
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import EmotionItem from "./EmotionItem";
-import { DiaryDispatchContext } from "../App";
+
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
@@ -36,16 +37,16 @@ const emotionList = [
 const getstringDate = (date) => {
     return date.toISOString().slice(0,10);
 };
-const DiaryEditor = () => {
+const DiaryEditor = ({isEdit,originData}) => {
     const contentRef = useRef();
     const [content,setContent] = useState("");
     const [emotion,setEmotion] = useState(3);
     const [date,setDate] =useState(getstringDate(new Date()));
     
-    const {onCreate} = useContext(DiaryDispatchContext);
-    const handleClickEmote = (emotion) => {
+    const {onCreate, onEdit} = useContext(DiaryDispatchContext);
+    const handleClickEmote = useCallback((emotion) => {
         setEmotion(emotion);
-    }
+    },[]);
 
     const navigate = useNavigate();
 
@@ -54,14 +55,28 @@ const DiaryEditor = () => {
             contentRef.current.focus();
             return;
         }
+        if(window.confirm(isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?")){
+            if(!isEdit){
+                onCreate(date,content,emotion);
+            }else{
+                onEdit(originData.id, date, content, emotion);
+            }
+        }
         onCreate(date,content,emotion);
         navigate('/',{replace:true});
-    }
+    };
+    useEffect(() => {
+        if(isEdit){
+            setDate(getstringDate(new Date(parseInt(originData.date))));
+            setEmotion(originData.emotion);
+            setContent(originData.content);
+        }
+    },[isEdit,originData])
     
     return (
         <div className="DiaryEditor">
             <MyHeader 
-                headText={"새 일기쓰기"}
+                headText={isEdit ? "일기 수정하기" : "새 일기쓰기"}
                 leftChild={<MyButton text={"< 뒤로가기"} onClick={()=> navigate(-1)} />}
             ></MyHeader>
             <div>
