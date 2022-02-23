@@ -54,9 +54,12 @@ const DiaryList = ({ diaryList }) => {
       }
     };
     const copyList = JSON.parse(JSON.stringify(diaryList));
-
+    
+    /* 감정 별로 일기 불러오기 */
     const filteredList =
       filter === "all" ? copyList : copyList.filter((it) => filterCallBack(it));
+
+    /* 최신순, 오래된순 일기 불러오기 */  
     const sortedList = filteredList.sort(compare);
     return sortedList;
   };
