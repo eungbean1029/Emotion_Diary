@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import * as Location from 'expo-location';
 
+const API_KEY = '397bbfd4e3213da0fc7650096004d846';
 
 class Weather extends Component {
     constructor(props) {
         super(props);
         this.state = { temp: 0, desc: '', icon: '', loading: true }
     }
+
     // 컴포넌트 생성 후 날씨 정보 조회
     componentDidMount() {
-        const cityName = 'Korea';
-        const apiKey = '397bbfd4e3213da0fc7650096004d846';
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                this.setState({
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude
+                });
+            }
+        )
+        
+        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${API_KEY}&units=metric`;
 
         axios.get(url)
         .then(responseData => {
