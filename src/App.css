@@ -49,11 +49,11 @@ body{
   color: black;
 }
 .MyButton_positive{
-  background-color: #64c964;
+  background-color: #26c6da;
   color:white;
 }
 .MyButton_negative{
-  background-color: #fd565f;
+  background-color: #f44336;
   color: white;
 }
 header{
@@ -74,10 +74,12 @@ header .head_text{
 header .head_btn_left{
   width: 25%;
   justify-content: start;
+  padding-left: 50px;
 }
 header .head_btn_right{
   width: 25%;
   justify-content: end;
+  padding-left: 50px;
 }
 header button{
   font-family: "Nanum Pen Script";
@@ -102,6 +104,8 @@ header button{
   border: none;
   border-radius: 5px;
   background-color: #ececec;
+  height: 35px;
+  width: 100px;
 
   padding-top: 10px;
   padding-bottom: 10px;
@@ -133,28 +137,20 @@ header button{
   display: flex;
   justify-content: center;
 }
-.DiaryItem .emotion_img_wrapper_1{
-  background-color: #64c964;
-}
-.DiaryItem .emotion_img_wrapper_2{
-  background-color: #9dd772;
-}
-.DiaryItem .emotion_img_wrapper_3{
-  background-color: #fdce17;
-}
-.DiaryItem .emotion_img_wrapper_4{
-  background-color: #fd8446;
-}
-.DiaryItem .emotion_img_wrapper_5{
-  background-color: #fd565f;
-}
+
 .DiaryItem .emotion_img_wrapper img{
-  width: 50%;
+  width: 100px;
+  height: 100px;
+}
+.DiaryItem .emotion_img_wrapper .emotion_img_wrapper_1{
+  width: 100px;
+  height: 100px;
 }
 .DiaryItem .info_wrapper{
   flex-grow: 1;
-  margin-left: 20px;
+  margin-left: 30px;
   cursor: pointer;
+  width: 200px;
 }
 .DiaryItem .diary_date {
   font-weight: bold;
@@ -320,4 +316,42 @@ header button{
   font-family: 'Yeon Sung';
   font-weight: 400;
   line-height: 2.5;
+}
+/* Weather */
+
+.Weather{
+  font-family: 'Yeon Sung';
+  display: flex;
+  justify-content: space-between;
+  padding: 0%;
+  margin: 0%;
+  position: center;
+  background-color: #F7F7F7;
+  
+}
+.Weather .Weather_info {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+.Weather .Weather_temp {
+  
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  padding-left: 30%;
+}
+.Weather .Weather_img img{
+  padding-left: 10%;
+  width:80px;
+  padding-bottom: 5px;
+}
+.Weather .Weather_img{
+  padding-left: 30px;
+  margin:0%;
+}
+.Weather .Weather_img p {
+  font-size: 20px;
+  margin:0%;
+  padding: 0%;
 }

@@ -24,7 +24,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
           ` emotion_img_wrapper_${emotion}`,
         ].join(" ")}
       >
-        <img
+        <img className="img_size"
           src={process.env.PUBLIC_URL + `/assets/emotion${emotion}.png`}
           alt=""
         />
