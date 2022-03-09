@@ -8,6 +8,7 @@ import EmotionItem from "./EmotionItem";
 
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emotion";
+import Question from "./Question";
 
 
 const env = process.env;
@@ -102,6 +103,9 @@ const DiaryEditor = ({isEdit,originData}) => {
                         />
                     </div>
             
+                </section>
+                <section>
+                    <Question></Question>
                 </section>
                 <section>
                     <div className="control_box">

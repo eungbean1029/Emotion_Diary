@@ -3,7 +3,7 @@ import MyHeader from './../components/MyHeader'
 import MyButton from './../components/MyButton'
 import DiaryList from './../components/DiaryList'
 import { DiaryStateContext } from "../App";
-import Weather2 from "../components/Weather2";
+import Weather from "../components/Weather";
 
 
 const Home = () => {
@@ -60,7 +60,7 @@ const Home = () => {
                 leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
                 rightChild={<MyButton text={">"} onClick={increaseMonth} />}
                 />
-                <Weather2></Weather2>
+                <Weather></Weather>
                 <DiaryList diaryList={data} />
         </div>
     );

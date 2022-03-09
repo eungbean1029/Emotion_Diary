@@ -68,7 +68,7 @@ header > div {
 }
 header .head_text{
   width: 50%;
-  font-size: 25px;
+  font-size: 30px;
   justify-content: center;
 }
 header .head_btn_left{
@@ -79,7 +79,7 @@ header .head_btn_left{
 header .head_btn_right{
   width: 25%;
   justify-content: end;
-  padding-left: 50px;
+  padding-right: 10%;
 }
 header button{
   font-family: "Nanum Pen Script";
@@ -109,12 +109,12 @@ header button{
 
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 20px;
+  padding-left: 25px;
   padding-right: 20px;
 
   cursor: pointer;
   font-family: "Nanum Pen Script";
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /*DiaryItem*/
@@ -323,8 +323,7 @@ header button{
   font-family: 'Yeon Sung';
   display: flex;
   justify-content: space-between;
-  padding: 0%;
-  margin: 0%;
+  margin: 2%;
   position: center;
   background-color: #F7F7F7;
   
@@ -339,7 +338,7 @@ header button{
   margin-bottom: 5px;
   padding-top: 30px;
   padding-bottom: 5px;
-  padding-left: 30%;
+  padding-left: 40%;
 }
 .Weather .Weather_img img{
   padding-left: 10%;
@@ -347,7 +346,7 @@ header button{
   padding-bottom: 5px;
 }
 .Weather .Weather_img{
-  padding-left: 30px;
+  padding-left: 11%;
   margin:0%;
 }
 .Weather .Weather_img p {
