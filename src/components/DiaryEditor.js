@@ -8,17 +8,39 @@ import EmotionItem from "./EmotionItem";
 
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emotion";
-import Question from "./Question";
+
 
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";
 
+    const question = [{
+        query1:"오늘 하루중에 후회한 일이 있었나요?",
+        
+    },
+    {
+        query1:"오늘 나에게 칭찬해주고 싶은 것이 있다면 무엇인가요?",
+        
+    },
+    {
+        query1:"오늘 제일 고마웠던 사람이 누구인가요?",
+        
+    },
+    {
+        query1:"오늘 무엇이 가장 즐거웠나요?",
+    }
+    ];
+    const randomQuestion = question[Math.floor(Math.random()*question.length)];
+
+
 
 const DiaryEditor = ({isEdit,originData}) => {
     const contentRef = useRef();
+    const randomRef = useRef();
     const [content,setContent] = useState("");
     const [emotion,setEmotion] = useState(3);
+    //const [query,setQuery] = useState(randomQuestion);
+    const [random,setRandom] = useState("");
     const [date,setDate] =useState(getStringDate(new Date()));
     
     const {onCreate, onEdit, onRemove} = useContext(DiaryDispatchContext);
@@ -32,12 +54,15 @@ const DiaryEditor = ({isEdit,originData}) => {
         if(content.length < 1){
             contentRef.current.focus();
             return;
+        }else if(random.length<1){
+            randomRef.current.focus();
+            return;
         }
         if(window.confirm(isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?")){
             if(!isEdit){
-                onCreate(date,content,emotion);
+                onCreate(date,content,emotion,random);
             }else{
-                onEdit(originData.id, date, content, emotion);
+                onEdit(originData.id, date, content, emotion,random);
             }
         }
         
@@ -48,6 +73,8 @@ const DiaryEditor = ({isEdit,originData}) => {
             setDate(getStringDate(new Date(parseInt(originData.date))));
             setEmotion(originData.emotion);
             setContent(originData.content);
+            //setQuery(originData.query);
+            setRandom(originData.random);
         }
     },[isEdit,originData])
     
@@ -105,8 +132,17 @@ const DiaryEditor = ({isEdit,originData}) => {
             
                 </section>
                 <section>
-                    <Question></Question>
+                    <h1>{randomQuestion.query1}</h1>
+                    <div className="input_box text_wrapper">
+                        <textarea 
+                            placeholder="답변 :)"
+                            ref={randomRef} 
+                            value={random} 
+                            onChange={(e)=> setRandom(e.target.value)}
+                        />
+                    </div>
                 </section>
+               
                 <section>
                     <div className="control_box">
                         <MyButton text={"취소하기"} onClick={()=>navigate(-1)} />

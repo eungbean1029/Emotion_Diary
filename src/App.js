@@ -58,13 +58,14 @@ function App() {
 
   const dataId = useRef(1);  
   //CREATE
-  const onCreate = (date, content, emotion) => {
+  const onCreate = (date, content, emotion,random) => {
     dispatch({type : "CREATE",
     data:{
       id:dataId.current,
       date :new Date(date).getTime(),
       content,
       emotion,
+      random,
     },
   });
   dataId.current += 1;
@@ -74,7 +75,7 @@ function App() {
     dispatch({type:"REMOVE",targetId});
   };
   //EDIT
-  const onEdit = (targerId, date, content, emotion) => {
+  const onEdit = (targerId, date, content, emotion,random) => {
     dispatch({
       type:"EDIT",
       data:{
@@ -82,6 +83,7 @@ function App() {
         date:new Date(date).getTime(),
         content,
         emotion,
+        random,
       },
     });
   }

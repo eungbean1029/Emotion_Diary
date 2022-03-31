@@ -49,7 +49,7 @@ const Diary = () => {
                             "diary_img_wrapper",
                             `diary_img_wrapper_${data.emotion}`,
                         ].join(" ")}>
-                            <img src={curEmotionData.emotion_img} />
+                            <img height="50%"src={curEmotionData.emotion_img} />
                             <div className="emotion_descript">
                                 {curEmotionData.emotion_descript}
                             </div>
@@ -59,6 +59,13 @@ const Diary = () => {
                         <h4>오늘의 일기</h4>
                         <div className="diary_content_wrapper">
                             <p>{data.content}</p>
+                        </div>
+                    </section>
+                    <section>
+                        <h4>오늘의 랜덤질문</h4>
+                        
+                        <div className="diary_content_wrapper">
+                            <p>{data.random}</p>
                         </div>
                     </section>
                 </article>
